@@ -6,6 +6,5 @@ module.exports = {
   trailingComma: "es5",
   proseWrap: "never",
   endOfLine: "lf",
-  embeddedLanguageFormatting: "off"
-
+  embeddedLanguageFormatting: "off",
 };

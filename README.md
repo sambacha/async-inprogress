@@ -32,42 +32,50 @@ var asyncWhile = require("async-while").generate(Promise);
 Now, generate a while function with `asyncWhile`. You'll need two functions: a synchronous condition and an action.
 
 ```js
-var myWhile = asyncWhile(function(data) {
-	// synchronous conditional
-	return true;
-}, function(data) {
-	// loop content goes here
-	return doSomethingAsync(data);
-});
+var myWhile = asyncWhile(
+  function (data) {
+    // synchronous conditional
+    return true;
+  },
+  function (data) {
+    // loop content goes here
+    return doSomethingAsync(data);
+  }
+);
 ```
 
 This is just a method that can be called directly or used in `.then()` statements.
 
 ```js
-myWhile(somedata).then(function(result) {
-	console.log(result);
+myWhile(somedata).then(function (result) {
+  console.log(result);
 });
 
 // or
-someAsyncAction().then(myWhile).then(function(result) {
-	console.log(result);
-});
+someAsyncAction()
+  .then(myWhile)
+  .then(function (result) {
+    console.log(result);
+  });
 ```
 
 Here is a common use case of the while loop, processing list items in a series:
 
 ```js
 function eachSeries(items, onEach, ctx) {
-	var index = -1;
+  var index = -1;
 
-	return asyncWhile(function() {
-		// bump index before every loop
-		index++;
+  return asyncWhile(
+    function () {
+      // bump index before every loop
+      index++;
 
-		// synchronously checks if there are more
-		return index < items.length;
-	}, function() {
-		return onEach.call(ctx, items[index], index, items);
-	})();
+      // synchronously checks if there are more
+      return index < items.length;
+    },
+    function () {
+      return onEach.call(ctx, items[index], index, items);
+    }
+  )();
 }
 ```

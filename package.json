@@ -23,6 +23,7 @@
     "browserify": "^17.0.0",
     "eslint": "^7.12.1",
     "mkdirp": "^1.0.4",
+    "prettier": "2.1.2",
     "uglifyjs": "^2.4.11"
   }
 }
