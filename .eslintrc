@@ -1,0 +1,15 @@
+{
+  "env": {},
+  "globals": {},
+  "rules": {
+    "no-eq-null": 2,
+    "no-use-before-define": [
+      2,
+      {
+        "functions": false
+      }
+    ],
+    "no-undef": 2,
+    "no-unused-vars": 2
+  }
+}
